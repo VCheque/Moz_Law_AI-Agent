@@ -11,7 +11,7 @@ from langchain_core.prompts import PromptTemplate
 # ==== CONFIGURAR CHAVE ====
 openai_api_key = os.getenv("OPENAI_API_KEY")
 if not openai_api_key:
-    st.error("⚠️ A chave da OpenAI (OPENAI_API_KEY) não foi definida.")
+    st.error("A chave da OpenAI (OPENAI_API_KEY) não foi definida.")
     st.stop()
 
 # ==== BANCO VETORIAL ====
@@ -55,7 +55,7 @@ st.set_page_config(page_title="Moz Legal Agent 🇲🇿", layout="centered")
 st.title("⚖️ Moz Legal Agent")
 st.markdown("Um assistente inteligente para apoiar advogados e legisladores com base nas leis de Moçambique.")
 
-with st.expander("ℹ️ Sobre este agente"):
+with st.expander(" Sobre este agente"):
     st.markdown("""
     - Este agente usa um modelo de linguagem (IA) com base apenas nas leis de Moçambique.
     - As respostas são baseadas em documentos legais indexados como a Constituição, o Código Penal e a Lei do Trabalho.
@@ -71,12 +71,12 @@ if "result" not in st.session_state:
 # ==== FUNÇÃO DE CONSULTA ====
 def responder():
     if st.session_state.query.strip() != "":
-        with st.spinner("🔍 Analisando a base legal..."):
+        with st.spinner("Analisando a base legal..."):
             st.session_state.result = qa_chain.invoke({"query": st.session_state.query})
         st.session_state.query = ""
 
 # ==== INTERFACE PRINCIPAL ====
-st.subheader("🔎 Faça sua pergunta:")
+st.subheader("Faça sua pergunta:")
 
 st.text_input(
     "Exemplo: 'Quais são os direitos do trabalhador segundo a Lei do Trabalho?'",
@@ -88,7 +88,7 @@ st.text_input(
 if st.session_state.result:
     resposta = st.session_state.result
 
-    st.markdown("### 🧠 Resposta:")
+    st.markdown("### Resposta:")
     st.success(resposta["result"])
 
     # Criar conteúdo para download
@@ -98,13 +98,13 @@ if st.session_state.result:
         resposta_txt += doc.page_content[:500] + "\n---\n"
 
     st.download_button(
-        label="📥 Baixar resposta como .txt",
+        label=" Baixar resposta como .txt",
         data=resposta_txt,
         file_name=f"resposta_legal_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt",
         mime="text/plain"
     )
 
-    st.markdown("### 📚 Fontes utilizadas:")
+    st.markdown("### Fontes utilizadas:")
     for doc in resposta["source_documents"]:
         st.markdown(f"**Arquivo:** `{doc.metadata.get('filename', 'desconhecido')}`")
         st.text(doc.page_content[:500])

@@ -7,13 +7,13 @@ from extract_texts import extract_texts_from_pdfs
 import os
 import openai
 
-# Set your OpenAI API key
-openai.api_key = os.getenv("OPENAI_API_KEY")  # Or just hardcode: openai.api_key = "sk-..."
 
-# Step 1: Load the texts
+openai.api_key = os.getenv("OPENAI_API_KEY")  
+
+#Load the texts
 texts = extract_texts_from_pdfs("data")
 
-# Step 2: Split texts into chunks
+# Split texts into chunks
 all_chunks = []
 splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
 
@@ -30,11 +30,11 @@ for item in texts:
             )
         )
 
-# Step 3: Create embedding and index
+# Create embedding and index
 embeddings = OpenAIEmbeddings()
 vector_db = FAISS.from_documents(all_chunks, embeddings)
 
-# Step 4: Save the vector database locally
+# Save the vector database locally
 vector_db.save_local("legal_index_mz")
 
 print("✅ Vector index created and saved as 'legal_index_mz'")
