@@ -14,7 +14,7 @@ if not openai_api_key:
     st.error("A chave da OpenAI (OPENAI_API_KEY) não foi definida.")
     st.stop()
 
-# ==== BANCO VETORIAL ====
+# ==== BANCO VECTORIAL ====
 vector_db = FAISS.load_local(
     "legal_index_mz",
     OpenAIEmbeddings(openai_api_key=openai_api_key),

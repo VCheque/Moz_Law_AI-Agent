@@ -37,4 +37,4 @@ vector_db = FAISS.from_documents(all_chunks, embeddings)
 # Save the vector database locally
 vector_db.save_local("legal_index_mz")
 
-print("✅ Vector index created and saved as 'legal_index_mz'")
+print("Vector index created and saved as 'legal_index_mz'")
