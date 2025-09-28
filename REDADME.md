@@ -34,8 +34,6 @@ The goal of this project is to create a robust and user-friendly platform that e
 ## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request.
 
-## License
-This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
-For inquiries, please contact [your email or website].
+For inquiries, please contact valtercheque@gmail.com.
