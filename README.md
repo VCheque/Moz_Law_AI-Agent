@@ -17,7 +17,7 @@ Moz_Law Agent is a project designed to streamline and simplify legal processes. 
 ## Getting Started
 1. Clone the repository:
     ```bash
-    git clone [repository-url]
+    git clone https://github.com/VCheque/Moz_Law_AI-Agent
     ```
 2. Install dependencies:
     ```bash
